@@ -1,15 +1,19 @@
 package com.codegym.backend.demo2.config.security;
 
 
-import com.codegym.backend.demo2.model.entity.Role;
-import com.codegym.backend.demo2.model.entity.User;
-import com.codegym.backend.demo2.service.role.IRoleService;
-import com.codegym.backend.demo2.service.user.IUserService;
+import com.codegym.backend.demo2.config.CustomAccessDeniedHandler;
+import com.codegym.backend.demo2.config.JwtAuthenticationFilter;
+import com.codegym.backend.demo2.config.RestAuthenticationEntryPoint;
+import com.codegym.backend.demo2.model.entity.AppRole;
+import com.codegym.backend.demo2.model.entity.AppUser;
+import com.codegym.backend.demo2.service.role.IAppRoleService;
+import com.codegym.backend.demo2.service.user.IAppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.BeanIds;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -25,9 +29,9 @@ import java.util.List;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
-    private IUserService userService;
+    private IAppUserService appUserService;
     @Autowired
-    private IRoleService roleService;
+    private IAppRoleService appRoleService;
     @Bean(BeanIds.AUTHENTICATION_MANAGER)
     @Override
     public AuthenticationManager authenticationManager() throws Exception {
@@ -37,34 +41,52 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     @Bean
-//    Bean ma hoa pass
-    public PasswordEncoder passwordEncoder() {
+    public PasswordEncoder passwordEncoder() { //bean mã hóa pass
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
+    public RestAuthenticationEntryPoint restServicesEntryPoint() {
+        return new RestAuthenticationEntryPoint();
+    }
+
+    @Bean
+    public CustomAccessDeniedHandler customAccessDeniedHandler() {
+        return new CustomAccessDeniedHandler();
+    }
+
+    @Bean
+    public JwtAuthenticationFilter jwtAuthenticationFilter() {
+        return new JwtAuthenticationFilter();
+    }
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        //lấy user từ DB
+        auth.userDetailsService(appUserService).passwordEncoder(passwordEncoder());
+    }
 
     @PostConstruct
     public void init() {
-        List<User> users = (List<User>) userService.findAll();
-        List<Role> roleList = (List<Role>) roleService.findAll();
-        if (roleList.isEmpty()) {
-            Role roleAdmin = new Role("ROLE_ADMIN");
-            roleService.save(roleAdmin);
-            Role roleUser= new Role("ROLE_USER");
-            roleService.save(roleUser);
-            Role roleAdminGroup= new Role("ROLE_ADMIN_GROUP");
-            roleService.save(roleUser);
+        List<AppUser> appUsers = (List<AppUser>) appUserService.findAll();
+        List<AppRole> appRoleList = (List<AppRole>) appRoleService.findAll();
+        if (appRoleList.isEmpty()) {
+            AppRole roleAdmin = new AppRole("ROLE_ADMIN");
+            appRoleService.save(roleAdmin);
+            AppRole roleUser= new AppRole("ROLE_USER");
+            appRoleService.save(roleUser);
+            AppRole roleAdminGroup= new AppRole("ROLE_ADMIN_GROUP");
+            appRoleService.save(roleUser);
         }
-        if (users.isEmpty()) {
-            User admin = new User("admin","123");
-            userService.saveAdmin(admin);
+        if (appUsers.isEmpty()) {
+            AppUser admin = new AppUser("admin","thuthuyda1");
+            appUserService.saveAdmin(admin);
         }
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().ignoringAntMatchers("/**");
-        //Tùy chỉnh lại thông báo 401 thông qua class restEntryPoint
-        http.httpBasic().authenticationEntryPoint(restServicesEntryPoint());
+        http.httpBasic().authenticationEntryPoint(restServicesEntryPoint());//Tùy chỉnh lại thông báo 401 thông qua class restEntryPoint
         http.authorizeRequests()
                 .antMatchers("/**",
                         "/login",

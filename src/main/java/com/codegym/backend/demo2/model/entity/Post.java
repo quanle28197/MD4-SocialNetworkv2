@@ -1,20 +1,23 @@
-package com.codegym.backend.demo2.model.post;
+package com.codegym.backend.demo2.model.entity;
 
-import org.springframework.web.multipart.MultipartFile;
-
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
-public class PostForm {
+@Entity
+@Table(name = "post")
+public class Post {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id ;
-    private String content;
-    private MultipartFile imagePost;
+    private String content ;
+    private String imagePost ;
     private LocalDateTime dateCreated;
     private String status;
 
-    public PostForm() {
+    public Post() {
     }
 
-    public PostForm(Long id, String content, MultipartFile imagePost, LocalDateTime dateCreated, String status) {
+    public Post(Long id, String content, String imagePost, LocalDateTime dateCreated, String status) {
         this.id = id;
         this.content = content;
         this.imagePost = imagePost;
@@ -22,13 +25,12 @@ public class PostForm {
         this.status = status;
     }
 
-    public PostForm(String content, MultipartFile imagePost, LocalDateTime dateCreated, String status) {
+    public Post(String content, String imagePost, LocalDateTime dateCreated, String status) {
         this.content = content;
         this.imagePost = imagePost;
         this.dateCreated = dateCreated;
         this.status = status;
     }
-
 
     public Long getId() {
         return id;
@@ -46,11 +48,11 @@ public class PostForm {
         this.content = content;
     }
 
-    public MultipartFile getImagePost() {
+    public String getImagePost() {
         return imagePost;
     }
 
-    public void setImagePost(MultipartFile imagePost) {
+    public void setImagePost(String imagePost) {
         this.imagePost = imagePost;
     }
 

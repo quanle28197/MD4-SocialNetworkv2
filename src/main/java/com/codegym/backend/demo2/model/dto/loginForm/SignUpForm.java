@@ -1,4 +1,4 @@
-package com.codegym.backend.demo2.model.dto;
+package com.codegym.backend.demo2.model.dto.loginForm;
 
 
 import lombok.AllArgsConstructor;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SignUpForm {
-    private String userName;
+    private String username;
     private String password;
     private String confirmPassword;
     private String email;
@@ -17,4 +17,5 @@ public class SignUpForm {
     private String phoneNumber;
     private String dateOfBirth;
     private String address;
+
 }

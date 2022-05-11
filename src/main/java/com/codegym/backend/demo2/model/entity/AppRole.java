@@ -13,14 +13,14 @@ import javax.persistence.*;
 @Table(name = "roles")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Role {
+public class AppRole {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
-    public Role(String name) {
+    public AppRole(String name) {
         this.name = name;
     }
 }

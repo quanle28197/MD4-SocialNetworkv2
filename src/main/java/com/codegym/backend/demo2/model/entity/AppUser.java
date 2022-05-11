@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class AppUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,15 +24,15 @@ public class User {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role")
-    private List<Role> roles;
+    private List<AppRole> roles;
 
-    public User(String username, String password, List<Role> roles) {
+    public AppUser(String username, String password, List<AppRole> roles) {
         this.username = username;
         this.password = password;
         this.roles = roles;
     }
 
-    public User(String username, String password) {
+    public AppUser(String username, String password) {
         this.username = username;
         this.password = password;
     }
