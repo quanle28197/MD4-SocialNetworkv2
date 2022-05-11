@@ -1,6 +1,8 @@
-package com.codegym.backend.repository;
+package com.codegym.backend.demo2.repository;
 
-import com.codegym.backend.model.User;
+
+
+import org.apache.catalina.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

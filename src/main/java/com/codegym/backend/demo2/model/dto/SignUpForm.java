@@ -1,4 +1,4 @@
-package com.codegym.backend.model.dto;
+package com.codegym.backend.demo2.model.dto;
 
 
 import lombok.AllArgsConstructor;

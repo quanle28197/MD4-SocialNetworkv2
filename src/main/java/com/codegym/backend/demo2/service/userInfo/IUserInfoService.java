@@ -1,8 +1,10 @@
-package com.codegym.backend.service.userInfo;
+package com.codegym.backend.demo2.service.userInfo;
 
 
-import com.codegym.backend.model.entity.UserInfo;
-import com.codegym.backend.service.IGeneralService;
+
+
+import com.codegym.backend.demo2.model.entity.UserInfo;
+import com.codegym.backend.demo2.service.IGeneralService;
 
 import java.util.Optional;
 

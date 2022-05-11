@@ -1,4 +1,6 @@
-package com.codegym.backend.model.entity;
+package com.codegym.backend.demo2.model.entity;
+
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

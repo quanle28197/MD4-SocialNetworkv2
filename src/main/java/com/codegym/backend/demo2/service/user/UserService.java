@@ -1,13 +1,13 @@
-package com.codegym.backend.service.user;
+package com.codegym.backend.demo2.service.user;
 
-import com.codegym.backend.model.User;
-import com.codegym.backend.model.dto.UserPrincipal;
-import com.codegym.backend.model.entity.Role;
-import com.codegym.backend.repository.IUserRepository;
+
+import com.codegym.backend.demo2.model.dto.UserPrincipal;
+import com.codegym.backend.demo2.model.entity.Role;
+import com.codegym.backend.demo2.model.entity.User;
+import com.codegym.backend.demo2.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
