@@ -1,10 +1,12 @@
-package com.codegym.backend.config;
+package com.codegym.backend.demo2.config.security;
 
 
-import com.codegym.backend.model.User;
-import com.codegym.backend.model.entity.Role;
-import com.codegym.backend.service.role.IRoleService;
-import com.codegym.backend.service.user.IUserService;
+
+
+import com.codegym.backend.demo2.model.User;
+import com.codegym.backend.demo2.model.entity.Role;
+import com.codegym.backend.demo2.service.role.IRoleService;
+import com.codegym.backend.demo2.service.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

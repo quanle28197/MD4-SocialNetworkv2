@@ -1,6 +1,7 @@
-package com.codegym.backend.repository;
+package com.codegym.backend.demo2.repository;
 
-import com.codegym.backend.model.entity.Role;
+
+import com.codegym.backend.demo2.model.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package com.codegym.backend.service;
+package com.codegym.backend.demo2.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

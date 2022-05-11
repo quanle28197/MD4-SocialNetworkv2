@@ -1,6 +1,6 @@
-package com.codegym.backend.model.dto;
+package com.codegym.backend.demo2.model.dto;
 
-import com.codegym.backend.model.entity.Role;
+import com.codegym.backend.demo2.model.entity.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
