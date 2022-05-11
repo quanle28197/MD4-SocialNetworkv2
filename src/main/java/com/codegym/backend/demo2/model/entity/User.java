@@ -1,12 +1,12 @@
-package com.codegym.backend.demo2.model;
+package com.codegym.backend.demo2.model.entity;
 
-import com.codegym.backend.demo2.model.entity.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
+
 
 @Entity
 @Table(name = "user")
@@ -18,7 +18,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String userName;
+    private String username;
 
     private String password;
 
@@ -26,14 +26,14 @@ public class User {
     @JoinTable(name = "user_role")
     private List<Role> roles;
 
-    public User(String userName, String password, List<Role> roles) {
-        this.userName = userName;
+    public User(String username, String password, List<Role> roles) {
+        this.username = username;
         this.password = password;
         this.roles = roles;
     }
 
-    public User(String userName, String password) {
-        this.userName = userName;
+    public User(String username, String password) {
+        this.username = username;
         this.password = password;
     }
 }

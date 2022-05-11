@@ -2,7 +2,7 @@ package com.codegym.backend.demo2.service.user;
 
 
 
-import com.codegym.backend.demo2.model.User;
+import com.codegym.backend.demo2.model.entity.User;
 import com.codegym.backend.demo2.service.IGeneralService;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
