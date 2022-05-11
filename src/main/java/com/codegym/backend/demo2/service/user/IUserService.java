@@ -1,8 +1,9 @@
-package com.codegym.backend.service.user;
+package com.codegym.backend.demo2.service.user;
 
 
-import com.codegym.backend.model.User;
-import com.codegym.backend.service.IGeneralService;
+
+import com.codegym.backend.demo2.model.User;
+import com.codegym.backend.demo2.service.IGeneralService;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 public interface IUserService extends IGeneralService<User>, UserDetailsService {

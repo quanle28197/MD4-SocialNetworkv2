@@ -1,7 +1,7 @@
-package com.codegym.backend.config;
+package com.codegym.backend.demo2.config;
 
-import com.codegym.backend.service.JwtService;
-import com.codegym.backend.service.user.IUserService;
+import com.codegym.backend.demo2.service.JwtService;
+import com.codegym.backend.demo2.service.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;

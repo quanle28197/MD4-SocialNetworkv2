@@ -1,6 +1,6 @@
-package com.codegym.backend.model;
+package com.codegym.backend.demo2.model;
 
-import com.codegym.backend.model.entity.Role;
+import com.codegym.backend.demo2.model.entity.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

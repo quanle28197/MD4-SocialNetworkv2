@@ -1,4 +1,4 @@
-package com.codegym.backend.config;
+package com.codegym.backend.demo2.config;
 
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;

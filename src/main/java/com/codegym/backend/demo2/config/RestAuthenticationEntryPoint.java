@@ -1,4 +1,4 @@
-package com.codegym.backend.config;
+package com.codegym.backend.demo2.config;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
