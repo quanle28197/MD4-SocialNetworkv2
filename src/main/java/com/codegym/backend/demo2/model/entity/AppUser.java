@@ -22,6 +22,7 @@ public class AppUser {
 
     private String password;
 
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role")
     private List<AppRole> roles;

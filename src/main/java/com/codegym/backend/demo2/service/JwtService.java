@@ -2,10 +2,11 @@ package com.codegym.backend.demo2.service;
 
 
 import com.codegym.backend.demo2.model.dto.loginForm.UserPrincipal;
-import com.sun.org.slf4j.internal.Logger;
-import com.sun.org.slf4j.internal.LoggerFactory;
+
 import io.jsonwebtoken.*;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 

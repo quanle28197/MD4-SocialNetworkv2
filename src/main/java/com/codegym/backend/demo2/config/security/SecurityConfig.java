@@ -38,8 +38,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManager();
     }
 
-
-
     @Bean
     public PasswordEncoder passwordEncoder() { //bean mã hóa pass
         return new BCryptPasswordEncoder();
@@ -79,7 +77,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             appRoleService.save(roleUser);
         }
         if (appUsers.isEmpty()) {
-            AppUser admin = new AppUser("admin","thuthuyda1");
+            AppUser admin = new AppUser("admin","quanLe2819");
             appUserService.saveAdmin(admin);
         }
     }
