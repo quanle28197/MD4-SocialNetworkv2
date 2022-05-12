@@ -10,18 +10,30 @@ public class Group1 {
     private Long id;
 
     private String groupName1;
+    private String backGroundUrl;
 
-    public Group1(Long id, String groupName1) {
+    public Group1(Long id, String groupName1, String backGroundUrl) {
         this.id = id;
+        this.groupName1 = groupName1;
+        this.backGroundUrl = backGroundUrl;
+    }
+
+    public Group1(String groupName1) {
         this.groupName1 = groupName1;
     }
 
     public Group1() {
     }
 
-    public Group1(String groupName1) {
-        this.groupName1 = groupName1;
+    public String getBackGroundUrl() {
+        return backGroundUrl;
     }
+
+    public void setBackGroundUrl(String backGroundUrl) {
+        this.backGroundUrl = backGroundUrl;
+    }
+
+
 
     public Long getId() {
         return id;
