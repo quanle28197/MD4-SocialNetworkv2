@@ -1,26 +1,26 @@
 package com.codegym.backend.demo2.model.entity;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-@Table(name = "groups")
-public class Group {
+@Table(name = "group1")
+public class Group1 {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
 
-    public Group(Long id, String name) {
+    private String groupName1;
+
+    public Group1(Long id, String groupName1) {
         this.id = id;
-        this.name = name;
+        this.groupName1 = groupName1;
     }
 
-    public Group() {
+    public Group1() {
     }
 
-    public Group(String name) {
-        this.name = name;
+    public Group1(String groupName1) {
+        this.groupName1 = groupName1;
     }
 
     public Long getId() {
@@ -32,10 +32,10 @@ public class Group {
     }
 
     public String getName() {
-        return name;
+        return groupName1;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.groupName1 = name;
     }
 }
