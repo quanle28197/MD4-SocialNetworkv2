@@ -1,4 +1,6 @@
-package com.codegym.backend.demo2.model;
+package com.codegym.backend.demo2.model.entity;
+
+import com.codegym.backend.demo2.model.entity.UserInfo;
 
 import javax.persistence.*;
 
