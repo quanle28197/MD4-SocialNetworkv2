@@ -1,20 +1,23 @@
 package com.codegym.backend.demo2.service;
 
 
-import com.codegym.backend.demo2.model.dto.UserPrincipal;
+import com.codegym.backend.demo2.model.dto.loginForm.UserPrincipal;
+
 import io.jsonwebtoken.*;
+
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
-import java.util.logging.Logger;
+
 
 @Service
 public class JwtService {
     private static final String SECRET_KEY = "123456789";
     private static final long EXPIRE_TIME = 86400000000L;
-    private static final Logger logger = (Logger) LoggerFactory.getLogger(JwtService.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(JwtService.class.getName());
 
     public String generateTokenLogin(Authentication authentication) {
         UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();

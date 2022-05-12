@@ -14,7 +14,6 @@ import javax.persistence.*;
 public class UserInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
 
     private String email;
@@ -29,19 +28,19 @@ public class UserInfo {
 
     private String avatar;
 
-    private String cover;
+    private String backGround;
 
     @OneToOne
-    private User user;
+    private AppUser appUser;
 
-    public UserInfo(String email, String fullName, String phoneNumber, String dateOfBirth, String address, String avatar, String cover, User user) {
+    public UserInfo(String email, String fullName, String phoneNumber, String dateOfBirth, String address, String avatar, String backGround, AppUser appUser) {
         this.email = email;
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
         this.dateOfBirth = dateOfBirth;
         this.address = address;
         this.avatar = avatar;
-        this.cover = cover;
-        this.user = user;
+        this.backGround = backGround;
+        this.appUser = appUser;
     }
 }
