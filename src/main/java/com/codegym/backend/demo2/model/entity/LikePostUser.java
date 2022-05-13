@@ -8,20 +8,25 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class ImagePostUser {
+@NoArgsConstructor
+public class LikePostUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String image;
+    private boolean status;
 
     @ManyToOne
     private PostUser postUser;
 
-    public ImagePostUser(String image, PostUser postUser) {
-        this.image = image;
+    @ManyToOne
+    private UserInfo userInfo;
+
+    public LikePostUser(boolean status, PostUser postUser, UserInfo userInfo) {
+        this.status = status;
         this.postUser = postUser;
+        this.userInfo = userInfo;
     }
+
 }
