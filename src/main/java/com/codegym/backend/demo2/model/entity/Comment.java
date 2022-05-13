@@ -9,6 +9,7 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String content;
+    private String image;
     @ManyToOne
     @JoinColumn(name = "info_id")
     private UserInfo userInfo;
@@ -18,6 +19,12 @@ public class Comment {
 
     public Comment(String content, UserInfo userInfo) {
         this.content = content;
+        this.userInfo = userInfo;
+    }
+
+    public Comment(String content, String image, UserInfo userInfo) {
+        this.content = content;
+        this.image = image;
         this.userInfo = userInfo;
     }
 
@@ -43,5 +50,13 @@ public class Comment {
 
     public void setUserInfo(UserInfo userInfo) {
         this.userInfo = userInfo;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
