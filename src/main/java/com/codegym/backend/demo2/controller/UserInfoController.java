@@ -23,7 +23,7 @@ import java.util.Optional;
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/userInfo")
-public class   UserInfoController {
+public class UserInfoController {
 
     @Value("${file-upload}")
     String uploadPath;
