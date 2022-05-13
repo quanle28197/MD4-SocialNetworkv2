@@ -18,8 +18,9 @@ public class Group1 {
         this.backGroundUrl = backGroundUrl;
     }
 
-    public Group1(String groupName1) {
+    public Group1(String groupName1, String backGroundUrl) {
         this.groupName1 = groupName1;
+        this.backGroundUrl = backGroundUrl;
     }
 
     public Group1() {

@@ -29,8 +29,8 @@ public class GroupController {
     public ResponseEntity<Iterable<Group1>> showAllGroup(){
         Iterable<Group1> groupList = groupService.findAllGroup();
         List<Group1> group1List = (List<Group1>) groupList;
-        if (group1List.isEmpty())
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        if (group1List.isEmpty())
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         return new ResponseEntity<>(group1List,HttpStatus.OK);
     }
 
@@ -60,16 +60,18 @@ public class GroupController {
         }catch (IOException e) {
             e.printStackTrace();
         }
-        Group1 group1 = new Group1(group1Form.getId(),group1Form.getGroupName1(),fileName);
+        Group1 group1 = new Group1(group1Form.getGroupName1(),fileName);
         groupService.save(group1);
-        return new ResponseEntity<>(group1,HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Group1> deleteById(@PathVariable Long id){
         Optional<Group1> group = groupService.findById(id);
+        if (!group.isPresent())
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         groupService.deleteById(id);
-        return new ResponseEntity<>(group.get(),HttpStatus.GONE);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/{id}")
