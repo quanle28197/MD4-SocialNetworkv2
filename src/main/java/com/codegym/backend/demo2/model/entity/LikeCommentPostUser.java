@@ -5,31 +5,27 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Post {
+public class LikeCommentPostUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String content;
-
-    private Date dateCreater;
+    private boolean status;
 
     @ManyToOne
-    private StatusPostUser status;
+    private Comment commentPostUser;
 
     @ManyToOne
     private UserInfo userInfo;
 
-    public Post(String content, Date dateCreater, StatusPostUser status, UserInfo userInfo) {
-        this.content = content;
-        this.dateCreater = dateCreater;
+    public LikeCommentPostUser(boolean status, Comment commentPostUser, UserInfo userInfo) {
         this.status = status;
+        this.commentPostUser = commentPostUser;
         this.userInfo = userInfo;
     }
 }
