@@ -1,74 +1,35 @@
 package com.codegym.backend.demo2.model.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
-@Table(name = "post")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id ;
-    private String content ;
-    private String imagePost ;
-    private LocalDateTime dateCreated;
-    private String status;
+    private Long id;
 
-    public Post() {
-    }
+    private String content;
 
-    public Post(Long id, String content, String imagePost, LocalDateTime dateCreated, String status) {
-        this.id = id;
+    private Date dateCreater;
+
+    @ManyToOne
+    private StatusPostUser status;
+
+    @ManyToOne
+    private UserInfo userInfo;
+
+    public Post(String content, Date dateCreater, StatusPostUser status, UserInfo userInfo) {
         this.content = content;
-        this.imagePost = imagePost;
-        this.dateCreated = dateCreated;
+        this.dateCreater = dateCreater;
         this.status = status;
-    }
-
-    public Post(String content, String imagePost, LocalDateTime dateCreated, String status) {
-        this.content = content;
-        this.imagePost = imagePost;
-        this.dateCreated = dateCreated;
-        this.status = status;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getImagePost() {
-        return imagePost;
-    }
-
-    public void setImagePost(String imagePost) {
-        this.imagePost = imagePost;
-    }
-
-    public LocalDateTime getDateCreated() {
-        return dateCreated;
-    }
-
-    public void setDateCreated(LocalDateTime dateCreated) {
-        this.dateCreated = dateCreated;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
+        this.userInfo = userInfo;
     }
 }

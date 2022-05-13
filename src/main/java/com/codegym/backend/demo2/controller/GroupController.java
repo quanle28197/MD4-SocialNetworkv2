@@ -1,7 +1,7 @@
 package com.codegym.backend.demo2.controller;
 
 import com.codegym.backend.demo2.model.entity.Group1;
-import com.codegym.backend.demo2.model.entity.Group1Form;
+import com.codegym.backend.demo2.model.dto.Group1Form;
 import com.codegym.backend.demo2.service.group.IGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;

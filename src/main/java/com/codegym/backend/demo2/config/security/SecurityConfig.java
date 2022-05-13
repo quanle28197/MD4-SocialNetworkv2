@@ -73,8 +73,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             appRoleService.save(roleAdmin);
             AppRole roleUser= new AppRole("ROLE_USER");
             appRoleService.save(roleUser);
-            AppRole roleAdminGroup= new AppRole("ROLE_ADMIN_GROUP");
-            appRoleService.save(roleUser);
+//            AppRole roleAdminGroup= new AppRole("ROLE_ADMIN_GROUP");
+//            appRoleService.save(roleUser);
         }
         if (appUsers.isEmpty()) {
             AppUser admin = new AppUser("admin","quanLe2819");
