@@ -23,6 +23,13 @@ public class CommentForm {
         this.userInfo = userInfo;
     }
 
+    public CommentForm(Long id, String content, MultipartFile image, UserInfo userInfo) {
+        this.id = id;
+        this.content = content;
+        this.image = image;
+        this.userInfo = userInfo;
+    }
+
     public Long getId() {
         return id;
     }

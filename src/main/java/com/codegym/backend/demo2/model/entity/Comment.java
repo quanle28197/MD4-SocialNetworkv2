@@ -28,6 +28,13 @@ public class Comment {
         this.userInfo = userInfo;
     }
 
+    public Comment(Long id, String content, String image, UserInfo userInfo) {
+        this.id = id;
+        this.content = content;
+        this.image = image;
+        this.userInfo = userInfo;
+    }
+
     public Long getId() {
         return id;
     }
