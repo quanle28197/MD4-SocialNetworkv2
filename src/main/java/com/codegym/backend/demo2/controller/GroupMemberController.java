@@ -26,15 +26,23 @@ public class GroupMemberController {
     @Autowired
     private IGroupService groupService;
 
-    @GetMapping("/{group_id}")
-    public ResponseEntity<Page<GroupMember>> showAllGroupMembers(@PageableDefault(value = 10) Pageable pageable , @PathVariable Long group_id) {
+    @GetMapping()
+    public ResponseEntity<Page<GroupMember>> showAllGroupMembers(@PageableDefault(value = 5) Pageable pageable ) {
         Page<GroupMember> groupMembers = this.groupMemberService.findAll(pageable);
         if (groupMembers.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(groupMembers, HttpStatus.OK);
     }
-
+@GetMapping("/{groupId}")
+public ResponseEntity<Page<GroupMember>> showAllGroupMembersByGroupId(@PageableDefault(value = 5)Pageable pageable, @PathVariable Long groupId){
+        groupService.findById(groupId);
+        Page<GroupMember> groupMembers = this.groupMemberService.findAllByGroup1Id(groupId,pageable);
+    if (groupMembers.isEmpty()) {
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+    return new ResponseEntity<>(groupMembers, HttpStatus.OK);
+}
     @PostMapping("")
     public ResponseEntity<GroupMember> createGroupMember(@RequestBody GroupMember groupMember) {
         return new ResponseEntity<>(groupMemberService.save(groupMember), HttpStatus.CREATED);
