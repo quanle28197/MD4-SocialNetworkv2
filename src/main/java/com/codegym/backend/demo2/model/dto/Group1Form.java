@@ -1,4 +1,4 @@
-package com.codegym.backend.demo2.model.entity;
+package com.codegym.backend.demo2.model.dto;
 
 import org.springframework.web.multipart.MultipartFile;
 

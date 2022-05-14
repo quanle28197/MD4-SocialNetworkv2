@@ -44,4 +44,9 @@ public class UserInfoService implements IUserInfoService{
     public Optional<UserInfo> findByUserId(Long userId) {
         return Optional.empty();
     }
+
+    @Override
+    public Optional<UserInfo> findUserInfoByFullName(String userInfo) {
+      return  userInfoRepository.findUserInfoByFullName(userInfo);
+    }
 }
