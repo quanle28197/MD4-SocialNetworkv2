@@ -57,7 +57,7 @@ public class CommentController {
         String fileName = multipartFile.getOriginalFilename();
         String fileUpload = environment.getProperty("file-upload");
         Comment existComment = new Comment(commentForm.getId(), commentForm.getContent(), fileName,
-                commentForm.getDateTime(), commentForm.getPostUser(), commentForm.getUserInfo());
+                LocalDateTime.now(), commentForm.getPostUser(), commentForm.getUserInfo());
         try {
             FileCopyUtils.copy(multipartFile.getBytes(), new File(fileUpload + fileName));
         } catch (IOException e) {
