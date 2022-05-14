@@ -13,4 +13,6 @@ public interface IUserInfoService extends IGeneralService<UserInfo> {
     Long findUserId(String email, String phoneNumber);
 
     Optional<UserInfo> findByUserId(Long appUserId);
+
+    Optional<UserInfo>findUserInfoByFullName(String userInfo);
 }

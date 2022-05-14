@@ -49,6 +49,15 @@ public class UserInfoController {
         return new ResponseEntity<>(userInfo.get(), HttpStatus.OK);
     }
 
+    @GetMapping("/{userName")
+    public ResponseEntity<UserInfo> findByName(@PathVariable String fullName) {
+        Optional<UserInfo> userInfo = this.userInfoService.findUserInfoByFullName(fullName);
+        if (!userInfo.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(userInfo.get(), HttpStatus.OK);
+    }
+
     @PostMapping ("/avt/{userId}")
     public ResponseEntity<UserInfo> editAvt(@PathVariable Long userId, @ModelAttribute AvatarForm avatarForm) {
         Optional<UserInfo> userInfo = userInfoService.findByUserId(userId);
