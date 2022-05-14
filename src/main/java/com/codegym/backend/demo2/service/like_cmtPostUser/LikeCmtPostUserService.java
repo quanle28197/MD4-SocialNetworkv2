@@ -1,5 +1,5 @@
-<<<<<<< HEAD
-/*
+/*<<<<<<< HEAD
+ *//*
 package com.codegym.backend.demo2.service.like_cmtPostUser;
 
 import com.example.module4_backend.model.entity.LikeCommentPostUser;
@@ -51,7 +51,7 @@ public class LikeCmtPostUserService implements ILikeCmtPostUserService {
         return iLikeCommentRepository.listLikeComments(cmPostUserId);
     }
 }
-*/
+*//*
 =======
 //package com.codegym.backend.demo2.service.like_cmtPostUser;
 //
@@ -106,4 +106,4 @@ public class LikeCmtPostUserService implements ILikeCmtPostUserService {
 //        return iLikeCommentRepository.listLikeComments(cmPostUserId);
 //    }
 //}
->>>>>>> dev
+>>>>>>> dev*/
