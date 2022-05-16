@@ -44,7 +44,8 @@ public class MessageController {
         Optional<Message> message = messageService.findById(id);
         if (!message.isPresent())
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        return new ResponseEntity<>(message.get(),HttpStatus.GONE);
+        messageService.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
