@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,7 +43,8 @@ public class CommentController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Comment comment = new Comment(commentForm.getContent(), fileName, commentForm.getUserInfo());
+        Comment comment = new Comment(commentForm.getContent(), fileName, LocalDateTime.now(),
+                commentForm.getPostUser(), commentForm.getUserInfo());
         commentService.save(comment);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -55,7 +57,7 @@ public class CommentController {
         String fileName = multipartFile.getOriginalFilename();
         String fileUpload = environment.getProperty("file-upload");
         Comment existComment = new Comment(commentForm.getId(), commentForm.getContent(), fileName,
-                commentForm.getUserInfo());
+                commentForm.getDateTime(), commentForm.getPostUser(), commentForm.getUserInfo());
         try {
             FileCopyUtils.copy(multipartFile.getBytes(), new File(fileUpload + fileName));
         } catch (IOException e) {
