@@ -1,5 +1,6 @@
 package com.codegym.backend.demo2.service.groupmember;
 
+import com.codegym.backend.demo2.model.dto.SearchByName;
 import com.codegym.backend.demo2.model.entity.Group1;
 import com.codegym.backend.demo2.model.entity.GroupMember;
 import com.codegym.backend.demo2.repository.IGroupMemberRepository;
@@ -38,5 +39,9 @@ public class GroupMemberService implements IGroupMemberService {
     @Override
     public Page<GroupMember> findAllByGroup1Id(Long group1Id ,Pageable pageable) {
         return groupMemberRepository.findAllByGroup1Id(group1Id , pageable);
+    }
+    @Override
+    public Page<SearchByName> findByNameUser(String fullName, Pageable pageable) {
+        return groupMemberRepository.findByNameUser(fullName , pageable );
     }
 }

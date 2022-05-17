@@ -3,6 +3,8 @@ package com.codegym.backend.demo2.repository;
 
 
 import com.codegym.backend.demo2.model.entity.UserInfo;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -18,8 +20,8 @@ public interface IUserInfoRepository extends JpaRepository<UserInfo, Long> {
     @Query(value="select  * from user_info where user_id = ?1", nativeQuery = true)
     Optional<UserInfo> findByUserId(Long userId);
 
-    @Query(value = "select * from user_info where user_name = ?1", nativeQuery = true)
-    Optional<UserInfo> findUserInfoByFullName(String name);
+    @Query(value = "select * from user_info where full_name like ?1", nativeQuery = true)
+    Page<UserInfo> findUserInfoByFullName(String fullName , Pageable pageable);
 
 
 }

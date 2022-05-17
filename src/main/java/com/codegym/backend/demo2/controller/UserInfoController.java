@@ -49,13 +49,10 @@ public class UserInfoController {
         return new ResponseEntity<>(userInfo.get(), HttpStatus.OK);
     }
 
-    @GetMapping("/{userName")
-    public ResponseEntity<UserInfo> findByName(@PathVariable String fullName) {
-        Optional<UserInfo> userInfo = this.userInfoService.findUserInfoByFullName(fullName);
-        if (!userInfo.isPresent()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(userInfo.get(), HttpStatus.OK);
+    @GetMapping("/{fullName}/name")
+    public ResponseEntity<Iterable <UserInfo>> findByName(@PageableDefault(value = 5) Pageable pageable,@PathVariable String fullName) {
+        Iterable<UserInfo> userInfo = this.userInfoService.findUserInfoByFullName("%"+fullName+"%",pageable);
+        return new ResponseEntity<>(userInfo, HttpStatus.OK);
     }
 
     @PostMapping ("/avt/{userId}")

@@ -46,7 +46,7 @@ public class UserInfoService implements IUserInfoService{
     }
 
     @Override
-    public Optional<UserInfo> findUserInfoByFullName(String userInfo) {
-      return  userInfoRepository.findUserInfoByFullName(userInfo);
+    public Page<UserInfo> findUserInfoByFullName(String fullName , Pageable pageable) {
+      return  userInfoRepository.findUserInfoByFullName(fullName , pageable);
     }
 }

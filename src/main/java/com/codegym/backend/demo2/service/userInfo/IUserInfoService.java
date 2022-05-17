@@ -5,6 +5,8 @@ package com.codegym.backend.demo2.service.userInfo;
 
 import com.codegym.backend.demo2.model.entity.UserInfo;
 import com.codegym.backend.demo2.service.IGeneralService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -14,5 +16,5 @@ public interface IUserInfoService extends IGeneralService<UserInfo> {
 
     Optional<UserInfo> findByUserId(Long appUserId);
 
-    Optional<UserInfo>findUserInfoByFullName(String userInfo);
+    Page<UserInfo> findUserInfoByFullName(String fullName, Pageable pageable);
 }
