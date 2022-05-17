@@ -18,7 +18,7 @@ public interface IUserInfoRepository extends JpaRepository<UserInfo, Long> {
     @Query(value="select  * from user_info where user_id = ?1", nativeQuery = true)
     Optional<UserInfo> findByUserId(Long userId);
 
-    @Query(value = "select * from user_info where user_name = ?1", nativeQuery = true)
+    @Query(value = "select * from user_info where user_name like ?1", nativeQuery = true)
     Optional<UserInfo> findUserInfoByFullName(String name);
 
 

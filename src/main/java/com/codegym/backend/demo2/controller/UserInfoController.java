@@ -51,7 +51,7 @@ public class UserInfoController {
 
     @GetMapping("/{userName}")
     public ResponseEntity<UserInfo> findByName(@PathVariable String fullName) {
-        Optional<UserInfo> userInfo = this.userInfoService.findUserInfoByFullName(fullName);
+        Optional<UserInfo> userInfo = this.userInfoService.findUserInfoByFullName('%' + fullName + '%');
         if (!userInfo.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
