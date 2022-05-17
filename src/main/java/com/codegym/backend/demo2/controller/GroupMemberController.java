@@ -37,12 +37,14 @@ public class GroupMemberController {
         }
         return new ResponseEntity<>(groupMembers, HttpStatus.OK);
     }
-@GetMapping("/{groupId}/{fullName}")
-public ResponseEntity<Page<SearchByName>> showUsertoAdd(@PageableDefault(value = 5) Pageable pageable,@PathVariable Long groupId,@PathVariable String fullName){
+
+    @GetMapping("/{groupId}/{fullName}")
+    public ResponseEntity<Page<SearchByName>> showUsertoAdd(@PageableDefault(value = 5) Pageable pageable, @PathVariable Long groupId, @PathVariable String fullName) {
         groupService.findById(groupId);
-        Page<SearchByName> list = this.groupMemberService.findByNameUser("%"+fullName+"%",pageable);
-        return new ResponseEntity<>(list,HttpStatus.OK);
-}
+        Page<SearchByName> list = this.groupMemberService.findByNameUser("%" + fullName + "%", pageable);
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
+
     @GetMapping("/{groupId}")
     public ResponseEntity<Page<GroupMember>> showAllGroupMembersByGroupId(@PageableDefault(value = 5) Pageable pageable, @PathVariable Long groupId) {
         groupService.findById(groupId);
@@ -54,17 +56,17 @@ public ResponseEntity<Page<SearchByName>> showUsertoAdd(@PageableDefault(value =
     }
 
     @PostMapping("/{groupId}/{userId}")
-    public ResponseEntity<GroupMember> createGroupMember( @PathVariable Long groupId , @PathVariable Long userId) {
-        GroupMember groupMember1 = new GroupMember(false,groupService.findById(groupId).get(),userInfoService.findById(userId).get());
+    public ResponseEntity<GroupMember> createGroupMember(@PathVariable Long groupId, @PathVariable Long userId) {
+        GroupMember groupMember1 = new GroupMember(false, groupService.findById(groupId).get(), userInfoService.findById(userId).get());
         return new ResponseEntity<>(groupMemberService.save(groupMember1), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{groupId}/{id}")
-    public ResponseEntity<GroupMember> deleteGroupMember( @PageableDefault(value = 5) Pageable pageable ,@PathVariable Long groupId,@PathVariable Long id) {
+    public ResponseEntity<GroupMember> deleteGroupMember(@PageableDefault(value = 5) Pageable pageable, @PathVariable Long groupId, @PathVariable Long id) {
         Optional<GroupMember> groupMember = groupMemberService.findById(id);
-            groupMemberService.deleteById(id);
-            Page<GroupMember> groupMembers = this.groupMemberService.findAllByGroup1Id(groupId, pageable);
-            return new ResponseEntity<>(groupMember.get(), HttpStatus.ACCEPTED);
+        groupMemberService.deleteById(id);
+        Page<GroupMember> groupMembers = this.groupMemberService.findAllByGroup1Id(groupId, pageable);
+        return new ResponseEntity<>(groupMember.get(), HttpStatus.ACCEPTED);
     }
 
     @PutMapping("/{id}")
@@ -76,14 +78,15 @@ public ResponseEntity<Page<SearchByName>> showUsertoAdd(@PageableDefault(value =
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
     @PutMapping("/{groupId}/{id}/status")
-    public ResponseEntity<Group1> editStatus(@PathVariable Long groupId , @PathVariable Long id, @RequestBody GroupMember groupMember){
+    public ResponseEntity<Group1> editStatus(@PathVariable Long groupId, @PathVariable Long id, @RequestBody GroupMember groupMember) {
         Optional<GroupMember> groupMember1 = groupMemberService.findById(id);
         if (!groupMember1.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         Boolean status = groupMember.getStatus();
-        GroupMember groupMember2 = new GroupMember(groupMember1.get().getId(),status,groupMember1.get().getGroup1(),groupMember1.get().getUserInfo());
+        GroupMember groupMember2 = new GroupMember(groupMember1.get().getId(), status, groupMember1.get().getGroup1(), groupMember1.get().getUserInfo());
         groupMemberService.save(groupMember2);
         return new ResponseEntity<>(HttpStatus.OK);
     }
